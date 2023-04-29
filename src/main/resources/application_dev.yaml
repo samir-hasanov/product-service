@@ -1,0 +1,59 @@
+#spring:
+#  application:
+#    name: product-service
+#  profiles:
+#    active: local
+#  main:
+#    allow-bean-definition-overriding: true
+#info:
+#  component: Prduct Service
+#
+#---
+#
+##spring.jpa.database=postgresql
+##spring.jpa.show-sql=true
+##spring.jpa.hibernate.ddl-auto=update
+##spring.datasource.driver-class-name=org.postgresql.Driver
+##spring.datasource.url=jdbc:postgresql://localhost:5432/stock_product
+##!<--Credencales base de datos-->
+##spring.datasource.username=postgres
+##spring.datasource.password=12345
+##
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/stock_product
+#    username: postgres
+#    password: 12345
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#spring:
+#  profiles: localhost
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      database-platform: org.hibernate.dialect.postgresqldialect
+#    properties:
+#      hibernate:
+#        default_schema: stock_management
+#  datasource:
+#    url: "jdbc:postgresql://localhost:5432/stock_management"
+#    username: postgres
+#    password: 12345
+
+
+
+
+
+
+
