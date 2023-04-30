@@ -16,5 +16,8 @@ public class ProductNotCreatedException extends RuntimeException{
        super(FriendlyMessageUtils.getFriendlyMessage(language,friendlyMessageCode));
         this.language = language;
         this.friendlyMessageCode = friendlyMessageCode;
+        log.info("[ProductNotCreatedException] -> message : {} developer : {}"
+                ,FriendlyMessageUtils.getFriendlyMessage(language,friendlyMessageCode)
+                ,message);
     }
 }
