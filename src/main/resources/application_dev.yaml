@@ -1,14 +1,31 @@
-#spring:
-#  application:
-#    name: product-service
-#  profiles:
-#    active: local
-#  main:
-#    allow-bean-definition-overriding: true
-#info:
-#  component: Prduct Service
-#
-#---
+spring:
+  application:
+    name: product-service
+  profiles:
+    active: localhost
+  main:
+    allow-bean-definition-overriding: true
+info:
+  component: Prduct Service
+
+server:
+  port: 8089
+
+
+---
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/stock_product
+    password: '12345'
+  jpa:
+    database: postgresql
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+
+
 #
 ##spring.jpa.database=postgresql
 ##spring.jpa.show-sql=true
@@ -40,13 +57,16 @@
 #    config:
 #      uri: http://localhost:8888
 #  jpa:
+#    database: postgresql
 #    hibernate:
-#      ddl-auto: update
+#      show-sql: true
+#      ddl-auto: create-drop
 #      database-platform: org.hibernate.dialect.postgresqldialect
 #    properties:
 #      hibernate:
 #        default_schema: stock_management
 #  datasource:
+#    driver-class-name: org.postgresql.Driver
 #    url: "jdbc:postgresql://localhost:5432/stock_management"
 #    username: postgres
 #    password: 12345
