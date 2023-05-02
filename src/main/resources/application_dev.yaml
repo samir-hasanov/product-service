@@ -11,7 +11,10 @@ info:
 server:
   port: 8089
 
-
+logging:
+  level:
+    root: off
+   com.alfa: DEBUG
 ---
 spring:
   datasource:

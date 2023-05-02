@@ -44,6 +44,22 @@ public class ProductController {
 
     }
 
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{language}/get/{productId}")
+    public InternalApiResponse<ProductResponse> getProduct(@PathVariable("language")Language language,
+                                                           @PathVariable("productId")Long productId){
+        log.debug("[{}][getProduct] -> request: {}",this.getClass().getSimpleName(),productId);
+                Product product= iProductRepositoryService.getProduct(language,productId);
+                ProductResponse productResponse=convertorProductResponse(product);
+        log.debug("[{}][getProduct] -> request: {}",this.getClass().getSimpleName(),productResponse);
+      return InternalApiResponse.<ProductResponse>builder()
+              .httpStatus(HttpStatus.OK)
+              .hasError(false)
+              .payload(productResponse)
+              .build();
+    }
+
   private ProductResponse convertorProductResponse(Product product) {
     return ProductResponse.builder()
             .productId(product.getProductId())

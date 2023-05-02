@@ -25,7 +25,7 @@ public class FriendlyMessageUtils {
 
         } catch (MissingResourceException missingResourceException) {
             log.error("Friendly message not found for key {}", messageCode);
-            return null;
+           return null;
         }
 
 
