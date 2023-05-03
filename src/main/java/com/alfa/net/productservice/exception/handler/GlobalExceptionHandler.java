@@ -1,6 +1,7 @@
 package com.alfa.net.productservice.exception.handler;
 
 import com.alfa.net.productservice.exception.enums.FriendlyMessageCodes;
+import com.alfa.net.productservice.exception.exceptions.ProductAlreadyDeletedException;
 import com.alfa.net.productservice.exception.exceptions.ProductNotCreatedException;
 import com.alfa.net.productservice.exception.exceptions.ProductNotFoundException;
 import com.alfa.net.productservice.exception.utils.FriendlyMessageUtils;
@@ -33,16 +34,31 @@ public class GlobalExceptionHandler {
 
    @ResponseStatus(HttpStatus.NOT_FOUND)
    @ExceptionHandler(ProductNotFoundException.class)
-    public InternalApiResponse<String> handlerProductNotFoundException(ProductNotFoundException exception){
- return InternalApiResponse.<String>builder()
-         .friendlyMessage(FriendlyMessage.builder()
-                 .title(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(),exception.getFriendlyMessageCode()))
-                 .description(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(),exception.getFriendlyMessageCode()))
-                 .build())
-         .httpStatus(HttpStatus.NOT_FOUND)
-         .hasError(true)
-         .errorMessage(Collections.singletonList(exception.getMessage()))
-         .build();
+    public InternalApiResponse<String> handlerProductNotFoundException(ProductNotFoundException exception) {
+       return InternalApiResponse.<String>builder()
+               .friendlyMessage(FriendlyMessage.builder()
+                       .title(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(), exception.getFriendlyMessageCode()))
+                       .description(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(), exception.getFriendlyMessageCode()))
+                       .build())
+               .httpStatus(HttpStatus.BAD_REQUEST)
+               .hasError(true)
+               .errorMessage(Collections.singletonList(exception.getMessage()))
+               .build();
+
+   }
+
+       @ResponseStatus(HttpStatus.BAD_REQUEST)
+       @ExceptionHandler(ProductAlreadyDeletedException.class)
+       public InternalApiResponse<String> handlerProductAlreadyDeletedException(ProductAlreadyDeletedException exception){
+           return InternalApiResponse.<String>builder()
+                   .friendlyMessage(FriendlyMessage.builder()
+                           .title(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(),exception.getFriendlyMessageCode()))
+                           .description(FriendlyMessageUtils.getFriendlyMessage(exception.getLanguage(),exception.getFriendlyMessageCode()))
+                           .build())
+                   .httpStatus(HttpStatus.NOT_FOUND)
+                   .hasError(true)
+                   .errorMessage(Collections.singletonList(exception.getMessage()))
+                   .build();
 
 
 
