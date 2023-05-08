@@ -21,6 +21,7 @@ public class FriendlyMessageUtils {
             Locale locale = new Locale(language.name());
             ResourceBundle resourceBundle = ResourceBundle.getBundle(RESOURCE_BUNDLE_NAME, locale);
             messageKey = messageCode.getClass().getSimpleName() + SPECIAL_CHARACTERS + messageCode;
+            log.debug("Friendly message key {}", messageCode);
             return resourceBundle.getString(messageKey);
 
         } catch (MissingResourceException missingResourceException) {
